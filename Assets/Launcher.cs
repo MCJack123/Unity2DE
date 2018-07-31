@@ -106,6 +106,7 @@ public class Launcher : MonoBehaviour {
         PlayerPrefs.SetString("LauncherApps", serialized);
         PlayerPrefs.SetString("DockApps", dock);
         PlayerPrefs.Save();
+        //Debug.Log("Saved!");
     }
 
     public void OpenLauncher() {

@@ -82,12 +82,19 @@ public class MenuDialog : MonoBehaviour {
 
     public void LogOut() {
         Dock.GetComponent<Launcher>().Save();
+        //Debug.Log("Logging out");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         UnityEngine.Application.Quit();
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+#endif
+
     }
-	
-	// Update is called once per frame
-	void Update() {
-		if (Input.GetMouseButton(0) && main.GetComponent<MenuDialog>().showing && (Input.mousePosition.x > 120 || Screen.height - Input.mousePosition.y > 120 || (Screen.height - Input.mousePosition.y < 30 && Input.mousePosition.x > 52))) {
+
+    // Update is called once per frame
+    void Update() {
+		if (Input.GetMouseButton(0) && main.GetComponent<MenuDialog>().showing && (Input.mousePosition.x > 170 || Screen.height - Input.mousePosition.y > 150 || (Screen.height - Input.mousePosition.y < 30 && Input.mousePosition.x > 52))) {
             //Debug.Log(Input.mousePosition.ToString());
             //Debug.Log("Closing");
             Destroy(main.GetComponent<MenuDialog>().menub.gameObject);
