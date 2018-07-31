@@ -82,8 +82,6 @@ public class MenuDialog : MonoBehaviour {
 
     public void LogOut() {
         Dock.GetComponent<Launcher>().Save();
-        Destroy(main.GetComponent<MenuDialog>().menub.gameObject);
-        main.GetComponent<MenuDialog>().showing = !main.GetComponent<MenuDialog>().showing;
         UnityEngine.Application.Quit();
     }
 	
