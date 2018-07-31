@@ -43,7 +43,7 @@ public class MenuDialog : MonoBehaviour {
         //Debug.Log("clicked");
         if (!main.GetComponent<MenuDialog>().showing) {
             //Debug.Log("showing");
-            menub = Instantiate(menu, new Vector3((170 / 2), (bounds.rect.height * bounds.localScale.y) - 90, 0), Quaternion.identity, parent.transform);
+            menub = Instantiate(menu, new Vector3((170 / 2), (bounds.rect.height * bounds.localScale.y) - 90, -20), Quaternion.identity, parent.transform);
             menub.GetComponent<MenuDialog>().main = main;
             menub.GetComponent<MenuDialog>().Dock = Dock;
             main.GetComponent<MenuDialog>().showing = true;
@@ -68,7 +68,7 @@ public class MenuDialog : MonoBehaviour {
             Destroy(main.GetComponent<MenuDialog>().menub.gameObject);
             main.GetComponent<MenuDialog>().showing = false;
         }
-        System.Diagnostics.Process.Start("/bin/systemctl", "poweroff");
+        //System.Diagnostics.Process.Start("/bin/systemctl", "poweroff"); // needs password
     }
 
     public void Restart() {
@@ -77,14 +77,14 @@ public class MenuDialog : MonoBehaviour {
             Destroy(main.GetComponent<MenuDialog>().menub.gameObject);
             main.GetComponent<MenuDialog>().showing = false;
         }
-        System.Diagnostics.Process.Start("/bin/systemctl", "reboot");
+        //System.Diagnostics.Process.Start("/bin/systemctl", "reboot"); // needs password
     }
 
     public void LogOut() {
         Dock.GetComponent<Launcher>().Save();
         Destroy(main.GetComponent<MenuDialog>().menub.gameObject);
         main.GetComponent<MenuDialog>().showing = !main.GetComponent<MenuDialog>().showing;
-        Application.Quit();
+        UnityEngine.Application.Quit();
     }
 	
 	// Update is called once per frame

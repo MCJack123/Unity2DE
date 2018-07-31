@@ -105,6 +105,7 @@ public class Launcher : MonoBehaviour {
         foreach (AppIcon slot in Dock.GetComponentsInChildren<AppIcon>()) if (slot.item) dock += (dock == "" ? "" : ",") + slot.id + "=" + slot.appname;
         PlayerPrefs.SetString("LauncherApps", serialized);
         PlayerPrefs.SetString("DockApps", dock);
+        PlayerPrefs.Save();
     }
 
     public void OpenLauncher() {

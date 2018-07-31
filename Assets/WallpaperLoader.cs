@@ -45,6 +45,7 @@ public class WallpaperLoader : MonoBehaviour {
             using (StringWriter textWriter = new StringWriter()) {
                 xmlSerializer.Serialize(textWriter, new Wallpaper { data = texture.EncodeToPNG() });
                 PlayerPrefs.SetString("Wallpaper", textWriter.ToString());
+                PlayerPrefs.Save();
             }
             textureIsNew = false;
         }
